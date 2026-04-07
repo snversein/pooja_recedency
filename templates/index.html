@@ -41,9 +41,9 @@
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#approvals">Approvals</a></li>
                     <li class="nav-item"><a class="nav-link" href="#pastprojects">Past Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#amenities">Amenities</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#approvals">Approvals</a></li>
                     <li class="nav-item ms-lg-3">
                         <a href="#contact" class="btn btn-primary rounded-pill px-4">Enquire Now</a>
                     </li>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="feature-item">
                                 <i class="bi bi-shield-check"></i>
-                                <span>RERA Approved</span>
+                                <span>RERA: PCGRERA060426002078</span>
                             </div>
                         </div>
                         <div class="hero-buttons">
@@ -152,47 +152,6 @@
         </div>
     </section>
 
-    <!-- Approvals Section -->
-    <section id="approvals" class="approvals-section py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <span class="section-subtitle">Legal Compliance</span>
-                <h2 class="section-title mx-auto">Approvals & Certifications</h2>
-                <p class="lead mx-auto" style="max-width: 600px;">Fully compliant with all regulatory authorities</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="approval-card">
-                        <img src="{{ url_for('static', filename='img/nagarpalikanigam.jpeg') }}" alt="Bilaspur Municipal Corporation" class="approval-img">
-                        <h4>Bilaspur Municipal Corporation</h4>
-                        <p class="approval-number">Permission No: 30/2026</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="approval-card">
-                        <img src="{{ url_for('static', filename='img/tnc.jpeg') }}" alt="Town & Country Planning" class="approval-img">
-                        <h4>Town & Country Planning</h4>
-                        <p class="approval-number">Approval No: 2090</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="approval-card">
-                        <img src="{{ url_for('static', filename='img/rera_cert.jpeg') }}" alt="Chhattisgarh RERA" class="approval-img">
-                        <h4>Chhattisgarh RERA</h4>
-                        <p class="approval-number">PCGRERA060426002078</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="approval-card">
-                        <img src="{{ url_for('static', filename='img/collector_permission.jpeg') }}" alt="Collector Office" class="approval-img">
-                        <h4>CG AWAAS (Single Window)</h4>
-                        <p class="approval-number">Certified by Collector Office</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- About Section -->
     <section id="about" class="about-section py-5">
         <div class="container">
@@ -236,6 +195,47 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approvals Section -->
+    <section id="approvals" class="approvals-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Legal Compliance</span>
+                <h2 class="section-title mx-auto">Approvals & Certifications</h2>
+                <p class="lead mx-auto" style="max-width: 600px;">Fully compliant with all regulatory authorities</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="approval-card">
+                        <img src="{{ url_for('static', filename='img/nagarpalikanigam.jpeg') }}" alt="Bilaspur Municipal Corporation" class="approval-img">
+                        <h4>Bilaspur Municipal Corporation</h4>
+                        <p class="approval-number">Permission No: 30/2026</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="approval-card">
+                        <img src="{{ url_for('static', filename='img/tnc.jpeg') }}" alt="Town & Country Planning" class="approval-img">
+                        <h4>Town & Country Planning</h4>
+                        <p class="approval-number">Approval No: 2090</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="approval-card">
+                        <img src="{{ url_for('static', filename='img/rera_cert.jpeg') }}" alt="Chhattisgarh RERA" class="approval-img">
+                        <h4>Chhattisgarh RERA</h4>
+                        <p class="approval-number">PCGRERA060426002078</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="approval-card">
+                        <img src="{{ url_for('static', filename='img/collector_permission.jpeg') }}" alt="Collector Office" class="approval-img">
+                        <h4>CG AWAAS (Single Window)</h4>
+                        <p class="approval-number">Certified by Collector Office</p>
                     </div>
                 </div>
             </div>
@@ -430,16 +430,17 @@
                 </div>
                 <div class="col-lg-4">
                     <h5 class="text-white mb-3">Project Details</h5>
-                    <ul class="footer-links">
-                        <li><strong>RERA No:</strong> PCGRERA060426002078</li>
-                        <li><strong>Valid Till:</strong> March 2031</li>
-                        <li><strong>Total Area:</strong> 1.5880 Hectares</li>
-                        <li><strong>Developer:</strong> Matashri Realities</li>
+                    <ul class="footer-links text-white">
+                        <li><span class="text-white">RERA No:</span> PCGRERA060426002078</li>
+                        <li><span class="text-white">Valid Till:</span> March 2031</li>
+                        <li><span class="text-white">Total Area:</span> 1.5880 Hectares</li>
+                        <li><span class="text-white">Developer:</span> Matashri Realities</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom text-center">
                 <p class="text-white-50 mb-0">&copy; 2026 Pooja Residency. All Rights Reserved. | Developed by Matashri Realities</p>
+                <p class="text-white-50 small mt-2">Website Design by Snverse</p>
             </div>
         </div>
     </footer>
