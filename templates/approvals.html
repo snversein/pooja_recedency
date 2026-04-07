@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approvals & Certifications | Pooja Residency</title>
+    <meta name="description" content="View all RERA approvals and certifications for Pooja Residency by Matashri Realities, Bilaspur.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: #f5f7fa;
+        }
+        .app-hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 100%);
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .app-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .app-hero h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .app-hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.2rem;
+            position: relative;
+        }
+        .breadcrumb {
+            background: transparent;
+            justify-content: center;
+        }
+        .breadcrumb-item a {
+            color: #d4a853;
+            text-decoration: none;
+        }
+        .breadcrumb-item.active {
+            color: rgba(255,255,255,0.6);
+        }
+        .main-cert-section {
+            padding: 60px 0;
+        }
+        .main-cert-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        .main-cert-image {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            position: relative;
+        }
+        .main-cert-image img {
+            max-height: 450px;
+            width: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        .main-cert-badge {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: #1e3a5f;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .main-cert-badge i {
+            color: #d4a853;
+        }
+        .main-cert-content {
+            padding: 50px;
+        }
+        .cert-heading {
+            font-size: 2.2rem;
+            color: #1e3a5f;
+            margin-bottom: 10px;
+        }
+        .cert-subheading {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .cert-reg-number {
+            background: linear-gradient(135deg, #1e3a5f, #2d5a8a);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 16px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        .cert-reg-number label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        .cert-reg-number strong {
+            font-size: 1.4rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        .cert-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .cert-detail-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .cert-detail-box i {
+            font-size: 2rem;
+            color: #d4a853;
+        }
+        .cert-detail-box label {
+            display: block;
+            color: #6c757d;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cert-detail-box strong {
+            color: #1e3a5f;
+            font-size: 1.1rem;
+        }
+        .cert-description {
+            color: #6c757d;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        .other-certs-section {
+            padding: 0 0 60px;
+        }
+        .other-certs-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .other-certs-title h2 {
+            color: #1e3a5f;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .other-certs-title p {
+            color: #6c757d;
+        }
+        .cert-horizontal-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .cert-horizontal-image {
+            flex: 0 0 350px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cert-horizontal-image img {
+            max-height: 200px;
+            width: auto;
+        }
+        .cert-horizontal-content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .cert-horizontal-content .tag {
+            display: inline-block;
+            background: #d4a853;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+        .cert-horizontal-content h3 {
+            color: #1e3a5f;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+        .cert-horizontal-content .info-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .cert-horizontal-content .info-row i {
+            color: #28a745;
+            font-size: 1.3rem;
+        }
+        .cert-horizontal-content .info-row label {
+            color: #6c757d;
+            font-size: 0.85rem;
+        }
+        .cert-horizontal-content .info-row strong {
+            color: #1e3a5f;
+            font-size: 1.1rem;
+        }
+        .cert-horizontal-content p {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .rera-banner-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1e3a5f, #2d5a8a);
+        }
+        .rera-banner-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 60px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .rera-banner-card i {
+            font-size: 5rem;
+            color: #d4a853;
+            margin-bottom: 30px;
+        }
+        .rera-banner-card h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .rera-banner-card p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        .rera-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .rera-stat-box {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .rera-stat-box h3 {
+            color: #d4a853;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+        .rera-stat-box p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        .cta-section {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        .cta-section h3 {
+            color: #1e3a5f;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .cta-section p {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 992px) {
+            .app-hero h1 {
+                font-size: 2.2rem;
+            }
+            .cert-details-grid {
+                grid-template-columns: 1fr;
+            }
+            .cert-horizontal-card {
+                flex-direction: column;
+            }
+            .cert-horizontal-image {
+                flex: none;
+                min-height: 200px;
+            }
+            .rera-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .main-cert-image {
+                min-height: 350px;
+                padding: 30px;
+            }
+            .main-cert-content {
+                padding: 30px;
+            }
+            .cert-heading {
+                font-size: 1.8rem;
+            }
+            .cert-horizontal-content {
+                padding: 25px;
+            }
+            .rera-banner-card {
+                padding: 40px 25px;
+            }
+            .rera-banner-card h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-3">
+                <span><i class="bi bi-telephone"></i> +91-9876543210</span>
+            </div>
+            <div class="d-flex gap-3">
+                <span class="badge bg-success"><i class="bi bi-shield-check"></i> RERA Approved</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{{ url_for('static', filename='img/logo.jpeg') }}" alt="Pooja Residency Logo" class="me-2" style="width: 60px; height: auto;">
+                <div>
+                    <span class="brand-name">Pooja Residency</span>
+                    <span class="brand-tagline">By Matashri Realities</span>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/approvals">Approvals & Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#pastprojects">Past Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#amenities">Amenities</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="/#contact" class="btn btn-primary rounded-pill px-4">Enquire Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="app-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active">Approvals & Certifications</li>
+                </ol>
+            </nav>
+            <h1>Approvals & Certifications</h1>
+            <p>All regulatory approvals and certifications for Pooja Residency</p>
+        </div>
+    </section>
+
+    <section class="main-cert-section">
+        <div class="container">
+            <div class="main-cert-card">
+                <div class="row g-0">
+                    <div class="col-lg-6">
+                        <div class="main-cert-image">
+                            <div class="main-cert-badge">
+                                <i class="bi bi-shield-check"></i>
+                                Primary Certification
+                            </div>
+                            <img src="{{ url_for('static', filename='img/rera_cert.jpeg') }}" alt="Chhattisgarh RERA Certificate">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="main-cert-content">
+                            <h2 class="cert-heading">Chhattisgarh RERA</h2>
+                            <p class="cert-subheading">Real Estate Regulatory Authority</p>
+                            
+                            <div class="cert-reg-number">
+                                <label>Registration Number</label>
+                                <strong>PCGRERA060426002078</strong>
+                            </div>
+                            
+                            <div class="cert-details-grid">
+                                <div class="cert-detail-box">
+                                    <i class="bi bi-calendar-check"></i>
+                                    <div>
+                                        <label>Valid Till</label>
+                                        <strong>March 2031</strong>
+                                    </div>
+                                </div>
+                                <div class="cert-detail-box">
+                                    <i class="bi bi-building"></i>
+                                    <div>
+                                        <label>Authority</label>
+                                        <strong>Chhattisgarh RERA</strong>
+                                    </div>
+                                </div>
+                                <div class="cert-detail-box">
+                                    <i class="bi bi-person-badge"></i>
+                                    <div>
+                                        <label>Developer</label>
+                                        <strong>Matashri Realities</strong>
+                                    </div>
+                                </div>
+                                <div class="cert-detail-box">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <div>
+                                        <label>Location</label>
+                                        <strong>Bilaspur, Chhattisgarh</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="cert-description">Official RERA registration ensuring complete transparency, accountability, and protection of buyer interests as per the Real Estate Regulation and Development Act.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="other-certs-section">
+        <div class="container">
+            <div class="other-certs-title">
+                <h2>Other Approvals & Certifications</h2>
+                <p>Complete regulatory compliance documentation</p>
+            </div>
+            
+            <div class="cert-horizontal-card">
+                <div class="cert-horizontal-image">
+                    <img src="{{ url_for('static', filename='img/nagarpalikanigam.jpeg') }}" alt="Bilaspur Municipal Corporation">
+                </div>
+                <div class="cert-horizontal-content">
+                    <span class="tag">Municipal Approval</span>
+                    <h3>Bilaspur Municipal Corporation</h3>
+                    <div class="info-row">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <div>
+                            <label>Permission No.</label>
+                            <strong>30/2026</strong>
+                        </div>
+                    </div>
+                    <p>Official building permission and layout approval from Bilaspur Municipal Corporation ensuring compliance with municipal regulations and development norms.</p>
+                </div>
+            </div>
+            
+            <div class="cert-horizontal-card">
+                <div class="cert-horizontal-image">
+                    <img src="{{ url_for('static', filename='img/tnc.jpeg') }}" alt="Town & Country Planning">
+                </div>
+                <div class="cert-horizontal-content">
+                    <span class="tag">Planning Approval</span>
+                    <h3>Town & Country Planning</h3>
+                    <div class="info-row">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <div>
+                            <label>Approval No.</label>
+                            <strong>2090</strong>
+                        </div>
+                    </div>
+                    <p>Comprehensive approval from Town & Country Planning Department confirming adherence to regional planning norms and land use regulations.</p>
+                </div>
+            </div>
+            
+            <div class="cert-horizontal-card">
+                <div class="cert-horizontal-image">
+                    <img src="{{ url_for('static', filename='img/collector_permission.jpeg') }}" alt="CG AWAAS Single Window">
+                </div>
+                <div class="cert-horizontal-content">
+                    <span class="tag">State Certification</span>
+                    <h3>CG AWAAS (Single Window)</h3>
+                    <div class="info-row">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <div>
+                            <label>Certification</label>
+                            <strong>Collector Office Certified</strong>
+                        </div>
+                    </div>
+                    <p>Single window clearance certification from District Collector Office for streamlined land development and plot registration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rera-banner-section">
+        <div class="container">
+            <div class="rera-banner-card">
+                <i class="bi bi-shield-check"></i>
+                <h2>RERA Verified Project</h2>
+                <p>Pooja Residency is a verified RERA project with complete transparency</p>
+                <div class="rera-stats">
+                    <div class="rera-stat-box">
+                        <h3>PCGRERA060426002078</h3>
+                        <p>RERA Registration Number</p>
+                    </div>
+                    <div class="rera-stat-box">
+                        <h3>Valid Till March 2031</h3>
+                        <p>Project Validity Period</p>
+                    </div>
+                    <div class="rera-stat-box">
+                        <h3>Matashri Realities</h3>
+                        <p>Registered Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h3>Ready to invest in a RERA approved project?</h3>
+            <p>Contact us today for site visits and more information about Pooja Residency.</p>
+            <a href="/#contact" class="btn btn-primary btn-lg rounded-pill px-5">Get In Touch</a>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <h4 class="text-white mb-3">Pooja Residency</h4>
+                        <p class="text-white-50">Premium residential plotted development in Bilaspur, Chhattisgarh. Your trusted investment destination.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-3">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/#amenities">Amenities</a></li>
+                        <li><a href="/approvals">Approvals & Certifications</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-3">Project Details</h5>
+                    <ul class="footer-links text-white">
+                        <li><span class="text-white">RERA No:</span> PCGRERA060426002078</li>
+                        <li><span class="text-white">Valid Till:</span> March 2031</li>
+                        <li><span class="text-white">Total Area:</span> 1.5880 Hectares</li>
+                        <li><span class="text-white">Developer:</span> Matashri Realities</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p class="text-white-50 mb-0">&copy; 2026 Pooja Residency. All Rights Reserved. | Developed by Matashri Realities</p>
+                <p class="text-white-50 small mt-2">Website Design by Snverse</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
